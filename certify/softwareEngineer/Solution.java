@@ -1,4 +1,4 @@
-package certify;
+package certify.softwareEngineer;
 
 import static java.util.stream.Collectors.toList;
 
@@ -12,7 +12,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
 
-
+/** Solution to HackerRank Software Engineer Certify "Conference Schedule" question **/
 
 class Result
 {

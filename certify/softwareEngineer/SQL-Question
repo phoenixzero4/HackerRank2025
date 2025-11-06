@@ -1,0 +1,33 @@
+ /** Solution to HackerRank Software Engineer Certify RestAPI question in Java **/
+ 
+ package certify.iptracker;
+
+ import java.net.http.HttpClient;
+
+ using System;using System.Net.Http;using System.Threading.Tasks;using Newtonsoft.Json.Linq;
+
+ class Result
+ {
+ public static string ipTracker(string ip)
+ {
+ string url = $"https://jsonmock.hackerrank.com/api/ip?ip={ip}";
+ using (HttpClient client = new HttpClient())
+ {
+ var response = client.GetAsync(url).Result;
+ if (!response.IsSuccessStatusCode)
+ {
+ return "No Result Found";
+ }
+
+ var content = response.Content.ReadAsStringAsync().Result;
+ JObject json = JObject.Parse(content);
+
+ if (json["data"] == null || json["data"].ToString() == "")
+ {
+ return "No Result Found";
+ }
+
+ return json["data"]["country"].ToString();
+ }
+ }
+ }
