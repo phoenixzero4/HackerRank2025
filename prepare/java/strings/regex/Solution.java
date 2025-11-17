@@ -2,23 +2,28 @@ package prepare.java.strings.regex;
 
 import java.util.Scanner;
 
-class UsernameValidator {
-
-    public static final String regularExpression = "^[A-Za-z][A-Za-z0-9_]{7,29}$";
-}
-
 public class Solution {
-    public static void main( String[] args ) {
-        Scanner in = new Scanner( System.in );
-        int n = Integer.parseInt( in.nextLine() );
-        while ( n-- > 0 ) {
-            String user = in.nextLine();
-            if ( user.matches( UsernameValidator.regularExpression ) ) {
-                System.out.println( "Valid" );
-            } else {
-                System.out.println( "Invalid" );
-            }
+    public static void main( String[] args ) throws Exception {
+
+        Scanner sc = new Scanner( System.in );
+        sc.useDelimiter( "\\A" );
+        String s = sc.hasNext() ? sc.next() : "";
+        sc.close();
+
+        s = s.replaceAll( "^[^A-Za-z]+|[^A-Za-z]+$", "" );
+
+        if ( s.isEmpty() ) {
+            System.out.println( 0 );
+            return;
+
         }
-        in.close();
+        String[] tokens = s.split( "[^A-Za-z]+" );
+
+        System.out.println( tokens.length );
+
+        for ( String t : tokens ) {
+            System.out.println( t );
+        }
+
     }
 }
