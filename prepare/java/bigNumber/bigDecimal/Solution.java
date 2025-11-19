@@ -3,12 +3,23 @@ package prepare.java.bigNumber.bigDecimal;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 public class Solution {
+
+    // other methods
+
+    public static boolean isPrime( BigInteger big ) {
+
+        if ( big.isProbablePrime( 100 ) ) {
+            return true; // input certainty here
+        }
+        return false;
+    }
 
     static List<String> list = new ArrayList<>();
 
@@ -25,6 +36,7 @@ public class Solution {
 
         Arrays.sort( s, 0, n, new Comparator<String>() {
 
+            @Override
             public int compare( String a, String b ) {
                 BigDecimal bda = new BigDecimal( a );
                 BigDecimal bdb = new BigDecimal( b );
